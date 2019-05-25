@@ -19,6 +19,31 @@ Day 1: Introduction to Machine Learning with Python
 
 class: middle
 
+## Outline
+
+[Day 1] Introduction to machine learning with Python  $\leftarrow$ **you are there**
+- Overview of artificial intelligence and machine learning
+- Get familiar with the data Python ecosystem.
+- Train your first ML model.
+
+[Day 2] Learn to identify and solve supervised learning problems
+
+[Day 3] Practice regression algorithms for sentiment analysis
+
+[Day 4] Learn how to let the machine tune itself
+
+---
+
+class: middle
+
+## Philosophy
+
+Learn through practice.
+
+---
+
+class: middle
+
 # Artificial Intelligence<br> & Machine Learning
 
 ---
@@ -59,7 +84,7 @@ How to *write a computer program* that would solve tasks we cannot even start de
 
 class: middle, center
 
-Instead, write programs that **learn** to solve the task.
+Instead, write programs that **learn** to solve tasks.
 
 ---
 
@@ -70,7 +95,7 @@ class: middle, center, black-slide
 .kol-1-2[<br><br>.width-100[![](figures/day1/perceptron3.jpg)]]
 ]
 
-The Mark I Percetron (Frank Rosenblatt, 1959).
+The Perceptron (Rosenblatt, 1959).
 
 ---
 
@@ -78,7 +103,7 @@ class: middle
 
 .center.width-90[![](figures/day1/neocognitron1.png)]
 
-Fukushima (1980) designs a computer implementation of a *neural network*, inspired from discoveries in medecine.
+The Neocognitron (Fukushima, 1980) is a computer implementation of a *neural network* with a visual perception system.
 A **total failure** at the time!
 
 .footnote[Credits: Kunihiko Fukushima, [Neocognitron: A Self-organizing Neural Network Model](https://www.rctn.org/bruno/public/papers/Fukushima1980.pdf), 1980.]
@@ -93,7 +118,7 @@ class: middle
 
 .center.width-90[![](figures/day1/eole.jpg)]
 
-.center[Biological inspiration? Not necessarily a good idea!]
+.center[Biological inspiration? **Not necessarily a good idea**!]
 
 ???
 
@@ -260,22 +285,6 @@ count: false
 
 ---
 
-# Yellow belt
-
-- [Day 1] Introduction to machine learning with *Python*
-
-
-- [Day 2] Learn to identify and solve **supervised learning** problems
-
-
-- [Day 3] Practice *regression algorithms* for sentiment analysis
-
-
-- [Day 4] Learn how to let the machine **tune** itself
-
-
----
-
 class: middle
 
 # Toolbox of the ML engineer
@@ -349,9 +358,10 @@ count: false
 
 ---
 
-# Python ecosystem for data analysis
+# Data analysis ecosystem in Python
 
-.center.width-90[![](figures/day1/python-ecosystem.png)]
+<br>
+.center.width-80[![](figures/day1/python-ecosystem.png)]
 
 ---
 
@@ -362,9 +372,15 @@ class: middle
 .grid[
 .kol-1-2[
 
-Web application that allows to create and share documents that contain live code, equations, visualizations and narrative text.
+Web application to create and share documents that contain live code, equations, visualizations and narrative text.
 
-Uses include: **data cleaning** and transformation, numerical simulation, *statistical modeling*, **data visualization**, *machine learning*, and much more.
+Uses include:
+- *data cleaning* and transformation
+- numerical simulation
+- *statistical modeling*
+- *data visualization*
+- **machine learning**
+- and much more.
 
 ]
 .kol-1-2[.center.width-100[![](figures/day1/jupyter.png)]]
@@ -376,12 +392,11 @@ class: middle
 
 ## Numpy
 
-NumPy is the fundamental package for scientific computing with Python. It contains among other things:
-
-- a powerful N-dimensional array object
-- sophisticated (broadcasting) functions
-- tools for integrating C/C++ and Fortran code
-- useful linear algebra, Fourier transform, and random number capabilities
+NumPy is the **fundamental package** for scientific computing with Python. It contains:
+- a powerful N-dimensional array object;
+- sophisticated (broadcasting) functions;
+- tools for integrating C/C++ and Fortran code;
+- useful linear algebra, Fourier transform, and random number capabilities.
 
 NumPy can also be used as an efficient multi-dimensional container of generic data.
 
@@ -393,7 +408,7 @@ class: middle
 
 Python has long been great for data munging and preparation, but less so for data analysis and modeling.
 
-Pandas helps fill this gap, enabling you to carry out your entire data analysis workflow in Python without having to switch to a more domain specific language like R.
+Pandas helps fill this gap, enabling you to carry out your entire data analysis workflow in Python without having to switch to a more domain specific language.
 
 .center.width-60[![](figures/day1/pandas.png)]
 
@@ -404,12 +419,13 @@ class: middle
 ## Scikit-Learn
 .pull-right[![](figures/day1/scikit-learn.png)]
 
-Machine Learning in Python.
-- simple and efficient tools for data mining and data analysis
-- accessible to everybody, and reusable in various contexts
-- built on NumPy, SciPy, and matplotlib
+Machine Learning in Python:
+- simple and efficient tools for data mining and data analysis,
+- accessible to everybody, and reusable in various contexts,
+- built on NumPy, SciPy, and matplotlib.
 
-.center.width-100[![](figures/day1/classifiers.png)]
+<br>
+.center.width-90[![](figures/day1/classifiers.png)]
 
 ---
 
