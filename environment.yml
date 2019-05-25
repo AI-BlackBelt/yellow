@@ -1,0 +1,12 @@
+name: aiblackbelt
+channels:
+  - conda-forge
+dependencies:
+  - python=3.6
+  - numpy
+  - scipy
+  - matplotlib
+  - scikit-learn
+  - jupyter
+  - pandas
+  - seaborn
