@@ -293,7 +293,7 @@ class: middle
 
 # Life cycle of an ML application
 
-<br><br>
+<br>
 
 .center.width-100[![](figures/day1/ai-cycle-1.png)]
 
@@ -303,7 +303,7 @@ count: false
 
 # Life cycle of an ML application
 
-<br><br>
+<br>
 
 .center.width-100[![](figures/day1/ai-cycle-2.png)]
 
@@ -313,7 +313,7 @@ count: false
 
 # Life cycle of an ML application
 
-<br><br>
+<br>
 
 .center.width-100[![](figures/day1/ai-cycle-3.png)]
 
@@ -323,7 +323,7 @@ count: false
 
 # Life cycle of an ML application
 
-<br><br>
+<br>
 
 .center.width-100[![](figures/day1/ai-cycle-4.png)]
 
@@ -333,7 +333,7 @@ count: false
 
 # Life cycle of an ML application
 
-<br><br>
+<br>
 
 .center.width-100[![](figures/day1/ai-cycle-5.png)]
 
@@ -343,15 +343,25 @@ count: false
 
 # Life cycle of an ML application
 
-<br><br>
+<br>
 
 .center.width-100[![](figures/day1/ai-cycle-6.png)]
 
 ---
 
+count: false
+
+# Life cycle of an ML application
+
+<br>
+
+.center.width-100[![](figures/day1/ai-cycle-yellow.png)]
+
+---
+
 # Roles
 
-<br><br>
+<br>
 
 .center.width-100[![](figures/day1/ai-roles.png)]
 
@@ -462,6 +472,54 @@ class: middle
 
 .footnote[Credits: vas3k, [Machine Learning for Everyone](https://vas3k.com/blog/machine_learning/), 2018.]
 
+---
+
+# Classification
+
+.center.width-70[![](figures/day1/classification.jpg)]
+
+.footnote[Credits: vas3k, [Machine Learning for Everyone](https://vas3k.com/blog/machine_learning/), 2018.]
+
+
+---
+
+# Representing data
+
+<br>
+.center.width-100[![](figures/day1/matrix-representation.png)]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-1-of-4/), 2019.]
+
+
+---
+
+# Training and test data
+
+<br>
+.center.width-100[![](figures/day1/train-test-split.png)]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-1-of-4/), 2019.]
+
+---
+
+# Supervised learning workflow
+
+.grid[
+
+.kol-1-2[
+```python
+clf = RandomForestClassifier()
+clf.fit(X_train, y_train)
+
+y_pred = clf.predict(X_test)
+clf.score(X_test, y_test)
+```
+]
+.kol-1-2[
+.center.width-100[![](figures/day1/supervised-ml-flow.svg)]
+]
+
+]
 
 ---
 
@@ -470,6 +528,14 @@ class: middle
 Jump to `day1-05-scikit-learn.ipynb`.
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AI-BlackBelt/yellow/master)
+
+---
+
+class: middle
+
+# Case study
+
+Jump to `day1-06-case-study.ipynb`.
 
     </textarea>
     <script src="./assets/remark-latest.min.js"></script>
