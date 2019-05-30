@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AI Black Belt - Yellow</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="./assets/katex.min.css">
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./assets/grid.css">
+  </head>
+  <body>
+    <textarea id="source">
+class: middle, center, title-slide
+
+# Yellow belt
+
+Day 2: Learn to identify and solve supervised learning problems
+
+---
+
+class: middle
+
+## Outline
+
+.inactive[[Day 1] Introduction to machine learning with Python]
+
+[Day 2] Learn to identify and solve supervised learning problems
+- Learn to recognize classification and regression problems in the wild.
+- Practice classification algorithms with Scikit-Learn.
+- Learn to evaluate properly the performance of your models.
+
+.inactive[[Day 3] Practice regression algorithms for sentiment analysis]
+
+.inactive[[Day 4] Learn how to let the machine tune itself]
+
+---
+
+class: middle
+
+# Supervised learning
+
+---
+
+class: middle
+
+.center.width-100[![](figures/day2/map3.jpg)]
+
+.footnote[Credits: vas3k, [Machine Learning for Everyone](https://vas3k.com/blog/machine_learning/), 2018.]
+
+
+---
+
+# Representing data
+
+<br>
+.center.width-100[![](figures/day2/matrix-representation.png)]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-1-of-4/), 2019.]
+
+---
+
+# Supervised learning
+
+.center.width-70[![](figures/day2/classification.jpg)]
+
+.footnote[Credits: vas3k, [Machine Learning for Everyone](https://vas3k.com/blog/machine_learning/), 2018.]
+
+---
+
+class: middle
+
+.center.width-70[![](figures/day2/regression.jpg)]
+
+.footnote[Credits: vas3k, [Machine Learning for Everyone](https://vas3k.com/blog/machine_learning/), 2018.]
+
+---
+
+class: middle
+
+Formally, given inputs $\mathbf{X}$ and outputs $\mathbf{y}$, we want to find a function $f$ such that $\mathbf{y}=f(\mathbf{X})$.
+- in classification, the set of possible output values is finite and *symbolic*.
+- in regression, the set of possible output values is infinite and **numerical**.
+
+---
+
+# In the wild
+
+.grid[
+.kol-1-2[
+## Classification
+
+- Visual recognition
+- Spam filtering
+- Sentiment analysis
+- Medical diagnosis
+- Weather forecast
+- Customer segmentation
+- Recommendations
+
+
+]
+.kol-1-2[
+## Regression
+
+- Weather forecast
+- Stock price forecast
+- Demand and sales volume analysis
+- Market value prediction
+- Playing games
+
+]
+]
+
+.exercice[Can you think of more examples?]
+
+---
+
+class: middle
+
+.exercice[Is this a classification or a regression problem?]
+
+---
+
+class: middle, center, black-slide
+
+.width-45[![](figures/day2/titanic1.jpg)]
+
+.width-45[![](figures/day2/titanic2.png)]
+
+Would you he survive the sinking of the Titanic?
+
+
+---
+
+class: middle, center, black-slide
+
+.width-55[![](figures/day2/cucumber1.png)]
+
+.width-55[![](figures/day2/cucumber2.png)]
+
+Sorting cucumbers?
+
+---
+
+class: middle, center, black-slide
+
+.width-80[![](figures/day2/jam.jpg)]
+
+How long will it take to arrive at work if you leave home at 6:00 AM?
+
+---
+
+class: middle, center, black-slide
+
+.width-80[![](figures/day2/sick.jpg)]
+
+Are you sick today?
+
+---
+
+class: middle, center, black-slide
+
+.width-80[![](figures/day2/castle.jpg)]
+
+What's the market value of my house?
+
+---
+
+class: middle
+
+.exercice[Identify supervised learning problems for each of the following situations. What are the inputs and outputs?]
+
+---
+
+class: middle, black-slide
+
+.center.width-80[![](figures/day2/fb1.png)]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-1-of-4/), 2019.]
+
+---
+
+class: middle, black-slide
+
+.center.width-80[![](figures/day2/facebook_gael.png)]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-1-of-4/), 2019.]
+
+
+---
+
+class: middle, center, black-slide
+
+.width-80[![](figures/day2/amazon.png)]
+
+---
+
+class: middle, center, black-slide
+
+.width-80[![](figures/day2/tesla.jpeg)]
+
+---
+
+class: middle, center, black-slide
+
+.width-40[![](figures/day2/pickit.jpg)]
+
+---
+
+class: middle, center, black-slide
+
+.width-80[![](figures/day2/eeg.jpg)]
+
+---
+
+class: middle
+
+# Classification algorithms
+
+---
+
+# Recap
+
+.grid[
+
+.kol-1-2[
+<br><br><br><br>
+
+## Scikit-Learn API
+
+```python
+clf = RandomForestClassifier()
+clf.fit(X_train, y_train)
+
+y_pred = clf.predict(X_test)
+clf.score(X_test, y_test)
+```
+]
+.kol-1-2[
+.center.width-100[![](figures/day2/supervised-ml-flow.svg)]
+]
+
+]
+
+---
+
+class: middle
+
+Jump to `day2-01-scikit-learn.ipynb`.
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AI-BlackBelt/yellow/master)
+
+---
+
+# Choosing the right estimator
+
+<br><br>
+.center.width-100[![](figures/day2/ml_map.png)]
+
+---
+
+linear model
+
+---
+
+knn
+
+---
+
+naive bayes
+
+---
+
+trees
+
+---
+
+elements of preprocessing
+
+garbage in gargabe out
+
+
+imputation
+scaling
+categorical features
+
+---
+
+class: middle
+
+Jump to `day2-02-titanic.ipynb`.
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AI-BlackBelt/yellow/master)
+
+---
+
+class: middle
+
+# Model evaluation
+
+---
+
+metrics
+
+---
+
+# Training and test data
+
+<br>
+.center.width-100[![](figures/day2/train-test-split.png)]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-1-of-4/), 2019.]
+
+---
+
+explain and illustrate the bias of training error
+
+---
+
+overfitting / overfitting
+
+---
+
+class: middle
+
+Jump to
+- `day2-03-evaluation.ipynb`
+- `day2-04-challenge.ipynb`
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AI-BlackBelt/yellow/master)
+
+
+    </textarea>
+    <script src="./assets/remark-latest.min.js"></script>
+    <script src="./assets/auto-render.min.js"></script>
+    <script src="./assets/katex.min.js"></script>
+
+    <script type="text/javascript">
+        var options = {highlightStyle: "tomorrow"};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [ // mind the order of delimiters(!?)
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "\\(", right: "\\)", display: false},
+            ]});
+        }
+      var slideshow = remark.create(options, renderMath);
+    </script>
+  </body>
+</html>

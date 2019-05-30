@@ -8,6 +8,25 @@ body {
     word-wrap: break-word;
 }
 
+.inactive {
+    color: lightgray;
+}
+
+.exercice {
+    background-color: rgba(40,167,69,0.25);
+    border: 2px solid rgb(40,167,69);
+    border-radius: 5px;
+    width: 95%;
+    display: block;
+    padding: 1em;
+}
+
+.exercice:before {
+    content: "Exercice";
+    font-weight: bold;
+    display: block;
+}
+
 .footnote {
   position: absolute;
   bottom: 2em;
@@ -207,12 +226,21 @@ td {
     width: 40%;
 }
 
+.width-45 * {
+    width: 45%;
+}
+
+
 .width-48 * {
     width: 48%;
 }
 
 .width-50 * {
     width: 50%;
+}
+
+.width-55 * {
+    width: 55%;
 }
 
 .width-60 * {
