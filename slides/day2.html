@@ -117,7 +117,7 @@ Formally, given inputs $\mathbf{X}$ and outputs $\mathbf{y}$, we want to find a 
 
 class: middle
 
-.exercice[Is this a classification or a regression problem?]
+.exercice[Is this a classification or a regression problem? What are the inputs and outputs?]
 
 ---
 
@@ -154,7 +154,7 @@ class: middle, center, black-slide
 
 .width-80[![](figures/day2/sick.jpg)]
 
-Are you sick today?
+Are you sick?
 
 ---
 
@@ -287,7 +287,11 @@ class: middle
 
 ## K-Nearest neighbors
 
-Predict the average output value among the $K$ closest neighbors to the input $\mathbf{x}$.
+Predict the average output value among the $K$ closest neighbors to the input $\mathbf{x}$. Closeness is typically defined using the Euclidean distance.
+
+.center.width-50[![](figures/day2/knn.png)]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-1-of-4/), 2019.]
 
 ---
 
@@ -379,24 +383,111 @@ class: middle
 
 ---
 
-metrics
+# Metrics
+
+Estimators in Scikit-Learn come with a built-in default evaluation score:
+- **accuracy** for classification
+- *R2 score* for regression
+
+Example:
+
+```python
+clf = KNeighborsClassifier(n_neighbors=5)
+clf.fit(X_train, y_train)
+print(clf.score(X_test, y_test))
+>>> 0.84
+```
+
+---
+
+class: middle
+
+## Accuracy
+
+The accuracy is the proportion of correct predictions.
+
+Example:
+
+```python
+from sklearn.metrics import accuracy_score
+print(accuracy_score(y_test, clf.predict(X_test)))
+>>> 0.84
+```
+
+.exercice[Is this an appropriate measure when classes are imbalanced?]
+
+---
+
+class: middle
+
+## Precision, recall and F-measure
+
+
+.grid[
+.kol-1-2.smaller-x[
+
+<br>
+$$
+\begin{aligned}
+\text{Precision} &= \frac{TP}{TP + FP} \\\\
+\text{Recall} &= \frac{TP}{TP + FN} \\\\
+F &= \frac{2 \times \text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+\end{aligned}
+$$
+
+]
+.kol-1-2[
+.center.width-100[![](figures/day2/pr.png)]
+]
+]
+
+
+```python
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
+from sklearn.metrics import fbeta_score
+print("Precision =", precision_score(y_test, clf.predict(X_test)))
+print("Recall =", recall_score(y_test, clf.predict(X_test)))
+print("F =", fbeta_score(y_test, clf.predict(X_test), beta=1))
+>>> Precision = 0.8118811881188119
+>>> Recall = 0.8631578947368421
+>>> F = 0.8367346938775511
+```
+
+
+
+---
+
+class: middle
+
+## ROC AUC
+
+Area under the curve of the false positive rate (FPR) against the true positive rate (TPR) as the decision threshold of the classifier is varied.
+
+.grid[
+.kol-1-2[
+.center.width-100[![](figures/day2/roc-auc.png)]
+]
+.kol-1-2[
+```python
+from sklearn.metrics import roc_auc_score
+print("ROC AUC =", roc_auc_score(y_test, clf.predict_proba(X_test, y_test)[:, 1])
+>>> ROC AUC = 0.9297744360902256
+```
+]
+]
 
 ---
 
 # Training and test data
 
-<br>
-.center.width-100[![](figures/day2/train-test-split.png)]
+.center.width-70[![](figures/day2/train-test-split.png)]
+
+Why splitting?
+- The error estimated on training data is typically optimistic. It **does not** accurately represent the performance the model would have on new data.
+- The actual performance is estimated on (independent) test data.
 
 .footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-1-of-4/), 2019.]
-
----
-
-explain and illustrate the bias of training error
-
----
-
-overfitting / overfitting
 
 ---
 
