@@ -104,6 +104,7 @@ Formally, given inputs $\mathbf{X}$ and outputs $\mathbf{y}$, we want to find a 
 - Weather forecast
 - Stock price forecast
 - Demand and sales volume analysis
+- Estimating the price of an Uber ride
 - Market value prediction
 - Playing games
 
@@ -214,7 +215,7 @@ class: middle, center, black-slide
 
 class: middle
 
-# Classification algorithms
+# Classification
 
 ---
 
@@ -258,30 +259,109 @@ Jump to `day2-01-scikit-learn.ipynb`.
 
 ---
 
-linear model
+class: middle
+
+## Linear model
+
+ Model the decision boundary as an hyperplane.
+
+.center.width-100[![](figures/day2/linear-model.jpg)]
+
+.footnote[Credits: vas3k, [Machine Learning for Everyone](https://vas3k.com/blog/machine_learning/), 2018.]
 
 ---
 
-knn
+class: middle
+
+.center.width-100[![](figures/day2/illus-lr.png)]
+
+```python
+from sklearn.linear_model import LogisticRegression
+clf = LogisticRegression()
+clf.fit(X, y)
+```
 
 ---
 
-naive bayes
+class: middle
+
+## K-Nearest neighbors
+
+Predict the average output value among the $K$ closest neighbors to the input $\mathbf{x}$.
 
 ---
 
-trees
+class: middle
+
+.center.width-100[![](figures/day2/illus-knn.png)]
+
+```python
+from sklearn.neighbors import KNeighborsClassifier
+clf = KNeighborsClassifier(n_neighbors=5)
+clf.fit(X, y)
+```
 
 ---
 
-elements of preprocessing
+class: middle
 
-garbage in gargabe out
+## Naive Bayes
 
+Idea: apply the Bayes rule to make predictions for $y$ given $\mathbf{x}$.
 
-imputation
-scaling
-categorical features
+.center.width-100[![](figures/day2/naive-bayes.jpg)]
+
+.footnote[Credits: vas3k, [Machine Learning for Everyone](https://vas3k.com/blog/machine_learning/), 2018.]
+
+---
+
+class: middle
+
+.center.width-100[![](figures/day2/illus-nb.png)]
+
+```python
+from sklearn.naive_bayes import GaussianNB
+clf = GaussianNB()
+clf.fit(X, y)
+```
+
+---
+
+class: middle
+
+## Decision trees
+
+Idea: build a partition of the input space using cuts orthogonal to feature axes.
+
+.center.width-100[![](figures/day2/tree.jpg)]
+
+.footnote[Credits: vas3k, [Machine Learning for Everyone](https://vas3k.com/blog/machine_learning/), 2018.]
+
+---
+
+class: middle
+
+.center.width-100[![](figures/day2/illus-tree.png)]
+
+```python
+from sklearn.tree import DecisionTreeClassifier
+clf = DecisionTreeClassifier()
+clf.fit(X, y)
+```
+
+---
+
+# Preprocessing
+
+Not only the performance on your system depends on the algorithm you pick, but also on how you **prepare** the data.
+
+- How should you treat missing values?
+- Does the scale of the features matter?
+- How do you encode categorical/symbolic features into numerical values?
+
+<br>
+.center.width-50[![](figures/day2/gigo.jpg)]
+.center.italic[Garbage in, garbage out.]
 
 ---
 
