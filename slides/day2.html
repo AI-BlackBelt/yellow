@@ -226,7 +226,7 @@ class: middle
 .kol-1-2[
 <br><br><br><br>
 
-## Scikit-Learn API
+## Estimator API
 
 ```python
 clf = RandomForestClassifier()
@@ -366,6 +366,23 @@ Not only the performance on your system depends on the algorithm you pick, but a
 <br>
 .center.width-50[![](figures/day2/gigo.jpg)]
 .center.italic[Garbage in, garbage out.]
+
+---
+
+class: middle
+
+## Transformer API
+
+```python
+tf = StandardScaler()
+tf.fit(X_train)
+X_train_scaled = tf.transform(X_train)
+X_test_scaled = tf.transform(X_test)
+```
+
+<br>
+.center.width-50[![](figures/day2/transformer-flow.svg)]
+
 
 ---
 
