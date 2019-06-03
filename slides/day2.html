@@ -316,30 +316,6 @@ clf.fit(X, y)
 
 class: middle
 
-## Naive Bayes
-
-Idea: apply the Bayes rule to make predictions for $y$ given $\mathbf{x}$.
-
-.center.width-100[![](figures/day2/naive-bayes.jpg)]
-
-.footnote[Credits: vas3k, [Machine Learning for Everyone](https://vas3k.com/blog/machine_learning/), 2018.]
-
----
-
-class: middle
-
-.center.width-100[![](figures/day2/illus-nb.png)]
-
-```python
-from sklearn.naive_bayes import GaussianNB
-clf = GaussianNB()
-clf.fit(X, y)
-```
-
----
-
-class: middle
-
 ## Decision trees
 
 Idea: build a partition of the input space using cuts orthogonal to feature axes.
@@ -357,6 +333,30 @@ class: middle
 ```python
 from sklearn.tree import DecisionTreeClassifier
 clf = DecisionTreeClassifier()
+clf.fit(X, y)
+```
+
+---
+
+class: middle
+
+## Naive Bayes (optional)
+
+Idea: apply the Bayes rule to make predictions for $y$ given $\mathbf{x}$.
+
+.center.width-100[![](figures/day2/naive-bayes.jpg)]
+
+.footnote[Credits: vas3k, [Machine Learning for Everyone](https://vas3k.com/blog/machine_learning/), 2018.]
+
+---
+
+class: middle
+
+.center.width-100[![](figures/day2/illus-nb.png)]
+
+```python
+from sklearn.naive_bayes import GaussianNB
+clf = GaussianNB()
 clf.fit(X, y)
 ```
 
