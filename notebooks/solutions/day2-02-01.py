@@ -13,3 +13,13 @@ df.groupby("race")["income_bin"].mean().plot(kind="bar")
 plt.show()
 
 df.corr()
+
+df.boxplot()
+plt.show()
+
+df.groupby("income").hist()
+plt.show()
+
+from pandas.plotting import scatter_matrix
+scatter_matrix(df, alpha=0.2, figsize=(10, 10), diagonal='kde')
+plt.show()

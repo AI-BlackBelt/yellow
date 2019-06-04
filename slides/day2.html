@@ -127,7 +127,7 @@ class: middle, center, black-slide
 
 .width-45[![](figures/day2/titanic2.png)]
 
-Would you he survive the sinking of the Titanic?
+Would he survive the sinking of the Titanic?
 
 
 ---
@@ -263,7 +263,7 @@ class: middle
 
 ## Linear model
 
- Model the decision boundary as an hyperplane.
+ Model the decision boundary as a hyperplane.
 
 .center.width-60[![](figures/day2/linear-model.jpg)]
 
@@ -408,23 +408,6 @@ class: middle
 ---
 
 # Metrics
-
-Estimators in Scikit-Learn come with a built-in default evaluation score:
-- **accuracy** for classification
-- *R2 score* for regression
-
-Example:
-
-```python
-clf = KNeighborsClassifier(n_neighbors=5)
-clf.fit(X_train, y_train)
-print(clf.score(X_test, y_test))
->>> 0.84
-```
-
----
-
-class: middle
 
 ## Accuracy
 
