@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AI Black Belt - Yellow</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="./assets/katex.min.css">
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./assets/grid.css">
+  </head>
+  <body>
+    <textarea id="source">
+class: middle, center, title-slide
+
+# Yellow belt
+
+Day 3: Practice regression algorithms for sentiment analysis
+
+---
+
+class: middle
+
+## Outline
+
+.inactive[[Day 1] Introduction to machine learning with Python]
+
+.inactive[[Day 2] Learn to identify and solve supervised learning problems]
+
+[Day 3] Practice regression algorithms for sentiment analysis
+- Practice regression algorithms with Scikit-Learn.
+- Learn to evaluate properly the performance of your models.
+- Implement a full ML pipeline: from raw to text to sentiment analysis.
+
+.inactive[[Day 4] Learn how to let the machine tune itself]
+
+---
+
+class: middle
+
+# Regression
+
+---
+
+class: middle
+
+Jump to
+- `day3-01-regression.ipynb`
+- `day3-02-boston.ipynb`
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AI-BlackBelt/yellow/master)
+
+---
+
+class: middle
+
+# Model evaluation
+
+---
+
+# Metrics for classification
+
+## Accuracy
+
+The accuracy is the proportion of correct predictions.
+
+Example:
+
+```python
+from sklearn.metrics import accuracy_score
+print(accuracy_score(y_test, clf.predict(X_test)))
+>>> 0.84
+```
+
+.exercice[Is this an appropriate measure when classes are imbalanced?]
+
+---
+
+class: middle
+
+## Precision, recall and F-measure
+
+$$
+\begin{aligned}
+\text{Precision} &= \frac{TP}{TP + FP} \\\\
+\text{Recall} &= \frac{TP}{TP + FN} \\\\
+F &= \frac{2 \times \text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+\end{aligned}
+$$
+
+.center.width-90[![](figures/day2/pr.png)]
+
+---
+
+class: middle
+
+
+```python
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
+from sklearn.metrics import fbeta_score
+
+print("Precision =", precision_score(y_test, clf.predict(X_test)))
+print("Recall =", recall_score(y_test, clf.predict(X_test)))
+print("F =", fbeta_score(y_test, clf.predict(X_test), beta=1))
+
+>>> Precision = 0.8118811881188119
+>>> Recall = 0.8631578947368421
+>>> F = 0.8367346938775511
+```
+
+
+
+---
+
+class: middle
+
+## ROC AUC
+
+Area under the curve of the false positive rate (FPR) against the true positive rate (TPR) as the decision threshold of the classifier is varied.
+
+.grid[
+.kol-1-2[
+.center.width-100[![](figures/day2/roc-auc.png)]
+]
+.kol-1-2[
+```python
+from sklearn.metrics import roc_auc_score
+print("ROC AUC =", roc_auc_score(y_test, clf.predict_proba(X_test)[:, 1])
+>>> ROC AUC = 0.9297744360902256
+```
+]
+]
+
+---
+
+# Metrics for regression
+
+xxx
+
+---
+
+# Training and test data
+
+.center.width-70[![](figures/day2/train-test-split.png)]
+
+Why splitting?
+- The error estimated on training data is typically optimistic. It **does not** accurately represent the performance the model would have on new data.
+- The actual performance should be estimated on (independent) test data.
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-1-of-4/), 2019.]
+
+---
+
+class: middle
+
+Jump to `day3-03-evaluation.ipynb`.
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AI-BlackBelt/yellow/master)
+
+---
+
+class: middle
+
+# Sentiment analysis
+
+---
+
+xxx
+
+---
+
+class: middle
+
+Jump to `day3-04-amazon.ipynb`.
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AI-BlackBelt/yellow/master)
+
+
+    </textarea>
+    <script src="./assets/remark-latest.min.js"></script>
+    <script src="./assets/auto-render.min.js"></script>
+    <script src="./assets/katex.min.js"></script>
+
+    <script type="text/javascript">
+        var options = {highlightStyle: "tomorrow"};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [ // mind the order of delimiters(!?)
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "\\(", right: "\\)", display: false},
+            ]});
+        }
+      var slideshow = remark.create(options, renderMath);
+    </script>
+  </body>
+</html>
