@@ -67,7 +67,7 @@ body {
 
 .remark-slide-content {
     font-size: 1.4em;
-    border-top: solid 5px #20707e;
+    border-top: solid 0px #20707e;
 }
 
 .remark-slide-content h1 {
@@ -274,8 +274,8 @@ td {
     content: '';
     background: url("../assets/aiblackbelt.jpg") no-repeat;
     background-size: 100% 100%;
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
     position: absolute;
     bottom: 2em;
     left: 3.3em;

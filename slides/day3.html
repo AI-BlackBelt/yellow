@@ -11,9 +11,12 @@
     <textarea id="source">
 class: middle, center, title-slide
 
-# Yellow belt
+.center[.width-60[![](./assets/yellow.png)]]
 
-Day 3: Practice regression algorithms for sentiment analysis
+## AI Black Belt - Yellow
+Day 3/4: Practice regression algorithms for sentiment analysis
+
+
 
 ---
 
@@ -26,27 +29,11 @@ class: middle
 .inactive[[Day 2] Learn to identify and solve supervised learning problems]
 
 [Day 3] Practice regression algorithms for sentiment analysis
-- Practice regression algorithms with Scikit-Learn.
 - Learn to evaluate properly the performance of your models.
+- Practice regression algorithms with Scikit-Learn.
 - Implement a full ML pipeline: from raw to text to sentiment analysis.
 
 .inactive[[Day 4] Learn how to let the machine tune itself]
-
----
-
-class: middle
-
-# Regression
-
----
-
-class: middle
-
-Jump to
-- `day3-01-regression.ipynb`
-- `day3-02-boston.ipynb`
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AI-BlackBelt/yellow/master)
 
 ---
 
@@ -56,7 +43,13 @@ class: middle
 
 ---
 
-# Metrics for classification
+# Classification
+
+.center.width-70[![](figures/day2/classification.jpg)]
+
+---
+
+class: middle
 
 ## Accuracy
 
@@ -107,8 +100,6 @@ print("F =", fbeta_score(y_test, clf.predict(X_test), beta=1))
 >>> F = 0.8367346938775511
 ```
 
-
-
 ---
 
 class: middle
@@ -132,12 +123,6 @@ print("ROC AUC =", roc_auc_score(y_test, clf.predict_proba(X_test)[:, 1])
 
 ---
 
-# Metrics for regression
-
-xxx
-
----
-
 # Training and test data
 
 .center.width-70[![](figures/day2/train-test-split.png)]
@@ -152,7 +137,7 @@ Why splitting?
 
 class: middle
 
-Jump to `day3-03-evaluation.ipynb`.
+Jump to `day3-01-evaluation.ipynb`.
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AI-BlackBelt/yellow/master)
 
@@ -160,20 +145,32 @@ Jump to `day3-03-evaluation.ipynb`.
 
 class: middle
 
-# Sentiment analysis
-
----
-
-xxx
+# Regression
 
 ---
 
 class: middle
 
-Jump to `day3-04-amazon.ipynb`.
+.center.width-70[![](figures/day2/regression.jpg)]
+
+---
+
+xxx metrics
+
+---
+
+xxx methods
+
+---
+
+class: middle
+
+Jump to
+- `day3-02-regression.ipynb`
+- `day3-03-boston.ipynb`
+- `day3-04-amazon.ipynb`
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AI-BlackBelt/yellow/master)
-
 
     </textarea>
     <script src="./assets/remark-latest.min.js"></script>
