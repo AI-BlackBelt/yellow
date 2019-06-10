@@ -39,6 +39,17 @@ class: middle
 
 class: middle
 
+## Wrap-up of the day 2 challenge
+
+Jump to `day2-03-challenge.ipynb`.
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AI-BlackBelt/yellow/master)
+
+
+---
+
+class: middle
+
 # Model evaluation
 
 ---
@@ -47,6 +58,9 @@ class: middle
 
 .center.width-70[![](figures/day2/classification.jpg)]
 
+.footnote[Credits: vas3k, [Machine Learning for Everyone](https://vas3k.com/blog/machine_learning/), 2018.]
+
+
 ---
 
 class: middle
@@ -54,8 +68,6 @@ class: middle
 ## Accuracy
 
 The accuracy is the proportion of correct predictions.
-
-Example:
 
 ```python
 from sklearn.metrics import accuracy_score
@@ -133,6 +145,12 @@ Why splitting?
 
 .footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-1-of-4/), 2019.]
 
+???
+
+Make the analogy with the classroom.
+
+E.g., estimate region from how long it took to arrive.
+
 ---
 
 class: middle
@@ -140,6 +158,9 @@ class: middle
 Jump to `day3-01-evaluation.ipynb`.
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AI-BlackBelt/yellow/master)
+
+.footnote[Credits: vas3k, [Machine Learning for Everyone](https://vas3k.com/blog/machine_learning/), 2018.]
+
 
 ---
 
@@ -155,11 +176,53 @@ class: middle
 
 ---
 
-xxx metrics
+# Metrics
+
+## Mean squared error
+
+Measures the average squared difference between the estimated values and what is estimated.
+
+```python
+from sklearn.metrics import mean_squared_error
+>>> y_true = [3, -0.5, 2, 7]
+>>> y_pred = [2.5, 0.0, 2, 8]
+>>> mean_squared_error(y_true, y_pred)
+0.375
+```
 
 ---
 
-xxx methods
+class: middle
+
+## R2 score
+
+The coefficient of determination represents the proportion of total variance explained by the model / total variance.
+- The best score is 1.0 and it can be negative.
+- A constant model would get a score of 0.0.
+
+```python
+>>> from sklearn.metrics import r2_score
+>>> y_true = [3, -0.5, 2, 7]
+>>> y_pred = [2.5, 0.0, 2, 8]
+>>> r2_score(y_true, y_pred)
+0.948...
+```
+
+---
+
+# Algorithms
+
+Supervised learning algorithms can often be used both for classification and regression. This includes:
+- decision trees
+- K-nearest neighbors
+- linear models
+- neural networks.
+
+---
+
+class: middle
+
+.center.width-60[![](figures/day3/map.jpg)]
 
 ---
 

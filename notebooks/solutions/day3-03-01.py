@@ -1,7 +1,21 @@
-X = X_tfidf
-y = df["Score"]
+
+
+X = df[['CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT']]
+y = df["MEDV"]
+
+print('X.shape:', X.shape)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
-regressor = Ridge()
-regressor.fit(X_train, y_train)
-regressor.score(X_test, y_test)
+
+linreg = LinearRegression()
+knnreg = KNeighborsRegressor(n_neighbors=1)
+
+linreg.fit(X_train, y_train)
+print('Linear Regression Train/Test: %.3f/%.3f' %
+      (linreg.score(X_train, y_train),
+       linreg.score(X_test, y_test)))
+
+knnreg.fit(X_train, y_train)
+print('KNeighborsRegressor Train/Test: %.3f/%.3f' %
+      (knnreg.score(X_train, y_train),
+       knnreg.score(X_test, y_test)))
 
