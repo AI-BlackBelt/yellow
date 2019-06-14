@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AI Black Belt - Yellow</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="./assets/katex.min.css">
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./assets/grid.css">
+  </head>
+  <body>
+    <textarea id="source">
+class: middle, center, title-slide
+
+.center[.width-60[![](./assets/yellow.png)]]
+
+## AI Black Belt - Yellow
+Day 4/4: Learn how to let the machine tune itself
+
+
+
+---
+
+class: middle
+
+## Outline
+
+.inactive[[Day 1] Introduction to machine learning with Python]
+
+.inactive[[Day 2] Learn to identify and solve supervised learning problems]
+
+.inactive[[Day 3] Practice regression algorithms for sentiment analysis]
+
+[Day 4] Learn how to let the machine tune itself
+- Learn how to automatically tune and evaluate your models.
+- Get familiar with intermediate ML algorithms.
+- Learn how to structure your ML pipeline with Scikit-Learn.
+
+---
+
+class: middle
+
+# Model selection and evaluation
+
+---
+
+xxx
+
+https://github.com/amueller/ml-workshop-2-of-4/blob/master/slides/02-cross-validation-grid-search.html
+
+---
+
+class: middle
+
+Jump to `day4-01-model-selection.ipynb`.
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AI-BlackBelt/yellow/master)
+
+---
+
+class: middle
+
+# Random forests and boosting
+
+---
+
+cart
+
+---
+
+rf
+- combining predictions
+- reduce variance  by introducing randomization
+
+---
+
+boosting
+- illustration
+- reg
+- important parameters
+
+---
+
+class: middle
+
+Jump to `day4-02-forest-boosting.ipynb`.
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AI-BlackBelt/yellow/master)
+
+---
+
+class: middle
+
+# Yellow belt test!
+
+---
+
+class: middle
+
+Jump to `day4-03-yellow-belt-test.ipynb`.
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AI-BlackBelt/yellow/master)
+
+---
+
+class: middle
+
+# Summary
+
+---
+
+xxx
+
+    </textarea>
+    <script src="./assets/remark-latest.min.js"></script>
+    <script src="./assets/auto-render.min.js"></script>
+    <script src="./assets/katex.min.js"></script>
+
+    <script type="text/javascript">
+        var options = {highlightStyle: "tomorrow"};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [ // mind the order of delimiters(!?)
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "\\(", right: "\\)", display: false},
+            ]});
+        }
+      var slideshow = remark.create(options, renderMath);
+    </script>
+  </body>
+</html>
