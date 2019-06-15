@@ -45,7 +45,8 @@ class: middle
 
 # Effect of `n_neighbors`
 
-.center.width-60[![](figures/day4/knn_boundary_k1.png)]
+<br>
+.center.width-50[![](figures/day4/knn_boundary_k1.png)]
 .center[`n_neighbors=1`]
 
 .footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
@@ -56,7 +57,8 @@ count: false
 
 # Effect of `n_neighbors`
 
-.center.width-60[![](figures/day4/knn_boundary_k3.png)]
+<br>
+.center.width-50[![](figures/day4/knn_boundary_k3.png)]
 .center[`n_neighbors=3`]
 
 .footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
@@ -65,7 +67,7 @@ count: false
 
 class: middle
 
-.center.width-70[![](figures/day4/knn_boundary_varying_k.png)]
+.center.width-60[![](figures/day4/knn_boundary_varying_k.png)]
 
 .footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
 
@@ -245,6 +247,9 @@ print("test-set score: {:.3f}".format(grid.score(X_test, y_test)))
 >>> test-set score: 0.993
 ```
 
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+
 ---
 
 class: middle
@@ -257,28 +262,181 @@ Jump to `day4-01-model-selection.ipynb`.
 
 class: middle
 
-# Random forests and boosting
+# Trees, random forests and boosting
 
 ---
 
-cart
+# Decision trees
+
+<br><br>
+.center.width-60[![](figures/day4/tree_illustration.png)]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
 
 ---
 
-rf
-- combining predictions
-- reduce variance  by introducing randomization
+class: middle
 
-file:///home/gilles/tmp/Untitled%20Folder/ml-workshop-2-of-4/slides/05-trees-forests.html#21
+## Construction
+
+.center.width-60[![](figures/day4/tree_building_iteration_1.png)]
+.center.width-60[![](figures/day4/tree_building_iteration_2.png)]
+.center.width-60[![](figures/day4/tree_building_iteration_9.png)]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
 
 ---
 
-boosting
-- illustration
-- reg
-- important parameters
+class: middle
 
-file:///home/gilles/tmp/Untitled%20Folder/ml-workshop-2-of-4/slides/06-gradient-boosting.html#18
+## Important parameters
+
+- `max_depth`
+- `max_leaf_nodes`
+- `min_samples_split`
+- `min_impurity_decrease`
+
+---
+
+class: middle
+
+.center.width-100[![](figures/day4/no_pruning.png)]
+
+.center[No pruning]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+---
+
+class: middle
+
+.center.width-100[![](figures/day4/max_depth_4.png)]
+
+.center[`max_depth=4`]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+---
+
+class: middle
+
+.center.width-60[![](figures/day4/max_leaf_nodes_8.png)]
+
+.center[`max_leaf_nodes=8`]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+---
+
+class: middle
+
+.center.width-100[![](figures/day4/min_samples_split_50.png)]
+
+.center[`min_samples_split=50`]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+
+---
+
+class: middle
+
+## Feature importances
+
+.grid[
+.kol-1-2[.width-100[![](figures/day4/instability_1.png)]]
+.kol-1-2[.width-100[![](figures/day4/tree_importances.png)]]
+]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+
+---
+
+# Random forests
+
+<br>
+.center.width-100[![](figures/day4/random_forest.png)]
+
+.center[Build $T$ randomized trees and average their predictions.]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+---
+
+class: middle
+
+## Important parameters
+
+- `n_estimators`: the more, the better
+- `max_features`: control the amount of randomness
+
+---
+
+# Gradient boosting
+
+<br><br><br>
+
+$$
+\begin{aligned}
+f\_{1}(x) &\approx y \\\\
+f\_{2}(x) &\approx y - f\_{1}(x) \\\\
+f\_{3}(x) &\approx y - f\_{1}(x) - f\_{2}(x)
+\end{aligned}$$
+
+$y \approx$ .width-25[![](figures/day4/grad_boost_term_1.png)] + .width-25[![](figures/day4/grad_boost_term_2.png)] + .width-20[![](figures/day4/grad_boost_term_3.png)] + ...
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+
+---
+
+count: false
+
+# Gradient boosting
+
+<br><br><br>
+
+$$
+\begin{aligned}
+f\_{1}(x) &\approx y \\\\
+f\_{2}(x) &\approx y - \gamma f\_{1}(x) \\\\
+f\_{3}(x) &\approx y - \gamma f\_{1}(x) - \gamma f\_{2}(x)
+\end{aligned}$$
+
+$y \approx$ $\gamma$ .width-25[![](figures/day4/grad_boost_term_1.png)] + $\gamma$ .width-25[![](figures/day4/grad_boost_term_2.png)] + $\gamma$ .width-20[![](figures/day4/grad_boost_term_3.png)] + ...
+
+$\gamma$ = learning rate
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+---
+
+class: middle
+
+.center.width-100[![](figures/day4/boosting.png)]
+
+---
+
+class: middle
+
+## Advantages
+
+- Slower to train than RF (if using "old" `GradientBoostingRegressor`), but much faster to predict.
+- Very fast using XGBoost, LightGBM, pygbm, new scikit-learn implementation `HistGradientBoosting`.
+- Small model size.
+- Typically the **best off-the-shelf model** for tabular data.
+
+
+---
+
+class: middle
+
+## Important parameters
+
+- `n_estimators` and `learning_rate`
+- `max_depth`
+- `max_features`
 
 ---
 
