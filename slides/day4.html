@@ -43,9 +43,207 @@ class: middle
 
 ---
 
-xxx
+# Effect of `n_neighbors`
 
-https://github.com/amueller/ml-workshop-2-of-4/blob/master/slides/02-cross-validation-grid-search.html
+.center.width-60[![](figures/day4/knn_boundary_k1.png)]
+.center[`n_neighbors=1`]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+---
+
+count: false
+
+# Effect of `n_neighbors`
+
+.center.width-60[![](figures/day4/knn_boundary_k3.png)]
+.center[`n_neighbors=3`]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+---
+
+class: middle
+
+.center.width-70[![](figures/day4/knn_boundary_varying_k.png)]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+---
+
+# Model complexity
+
+.center.width-100[![](figures/day4/knn_model_complexity.png)]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+
+---
+
+# Overfitting and underfitting
+
+<br>
+.center.width-100[![](figures/day4/overfitting_underfitting_cartoon_train.png)]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+---
+
+count: false
+
+# Overfitting and underfitting
+
+<br>
+.center.width-100[![](figures/day4/overfitting_underfitting_cartoon_generalization.png)]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+---
+
+count: false
+
+# Overfitting and underfitting
+
+<br>
+.center.width-100[![](figures/day4/overfitting_underfitting_cartoon_full.png)]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+---
+
+# Model selection and evaluation
+
+.center.width-80[![](figures/day4/train-test-split.png)]
+
+.exercice[How to do both hyper-parameter tuning and model evaluation?]
+
+---
+
+class: middle
+
+## Threefold split
+
+.center.width-100[![](figures/day4/threefold_split.png)]
+
+- pro: fast, simple
+- con: high variance, bad use of data
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+---
+
+class: middle
+
+```python
+X_trainval, X_test, y_trainval, y_test = train_test_split(X, y)
+X_train, X_val, y_train, y_val = train_test_split(X_trainval, y_trainval)
+val_scores = []
+neighbors = np.arange(1, 15, 2)
+
+for i in neighbors:
+    knn = KNeighborsClassifier(n_neighbors=i)
+    knn.fit(X_train, y_train)
+    val_scores.append(knn.score(X_val, y_val))
+
+print("best validation score: {:.3f}".format(np.max(val_scores)))
+best_n_neighbors = neighbors[np.argmax(val_scores)]
+print("best n_neighbors:", best_n_neighbors)
+
+knn = KNeighborsClassifier(n_neighbors=best_n_neighbors)
+knn.fit(X_trainval, y_trainval)
+print("test-set score: {:.3f}".format(knn.score(X_test, y_test)))
+
+>>> best validation score: 0.991
+>>> best n_neighbors: 11
+>>> test-set score: 0.951
+```
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+---
+
+class: middle
+
+## Cross-validation
+
+.center.width-100[![](figures/day4/kfold_cv.png)]
+
+- pro: more stable, more data
+- con: slower
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+---
+
+class: middle
+
+.center.width-100[![](figures/day4/grid_search_cross_validation.png)]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+---
+
+class: middle
+
+```python
+from sklearn.model_selection import cross_val_score
+
+X_train, X_test, y_train, y_test = train_test_split(X, y)
+cross_val_scores = []
+
+for i in neighbors:
+    knn = KNeighborsClassifier(n_neighbors=i)
+    scores = cross_val_score(knn, X_train, y_train, cv=10)
+    cross_val_scores.append(np.mean(scores))
+
+print("best cross-validation score: {:.3f}".format(np.max(cross_val_scores)))
+best_n_neighbors = neighbors[np.argmax(cross_val_scores)]
+print("best n_neighbors:", best_n_neighbors)
+
+knn = KNeighborsClassifier(n_neighbors=best_n_neighbors)
+knn.fit(X_train, y_train)
+print("test-set score: {:.3f}".format(knn.score(X_test, y_test)))
+
+>>> best cross-validation score: 0.967
+>>> best n_neighbors: 9
+>>> test-set score: 0.965
+```
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+---
+
+class: middle
+
+## Grid search
+
+.center.width-80[![](figures/day4/gridsearch_workflow.png)]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+
+---
+
+class: middle
+
+```python
+from sklearn.model_selection import GridSearchCV
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y)
+
+param_grid = {'n_neighbors':  np.arange(1, 15, 2)}
+grid = GridSearchCV(KNeighborsClassifier(), param_grid=param_grid,
+                    cv=10, return_train_score=True)
+grid.fit(X_train, y_train)
+
+print("best mean cross-validation score: {:.3f}".format(grid.best_score_))
+print("best parameters: {}".format(grid.best_params_))
+print("test-set score: {:.3f}".format(grid.score(X_test, y_test)))
+
+>>> best mean cross-validation score: 0.967
+>>> best parameters: {'n_neighbors': 9}
+>>> test-set score: 0.993
+```
 
 ---
 
@@ -71,12 +269,16 @@ rf
 - combining predictions
 - reduce variance  by introducing randomization
 
+file:///home/gilles/tmp/Untitled%20Folder/ml-workshop-2-of-4/slides/05-trees-forests.html#21
+
 ---
 
 boosting
 - illustration
 - reg
 - important parameters
+
+file:///home/gilles/tmp/Untitled%20Folder/ml-workshop-2-of-4/slides/06-gradient-boosting.html#18
 
 ---
 
@@ -90,7 +292,7 @@ Jump to `day4-02-forest-boosting.ipynb`.
 
 class: middle
 
-# Yellow belt test!
+# Yellow belt final test!
 
 ---
 
