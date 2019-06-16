@@ -136,36 +136,6 @@ class: middle
 
 class: middle
 
-```python
-X_trainval, X_test, y_trainval, y_test = train_test_split(X, y)
-X_train, X_val, y_train, y_val = train_test_split(X_trainval, y_trainval)
-val_scores = []
-neighbors = np.arange(1, 15, 2)
-
-for i in neighbors:
-    knn = KNeighborsClassifier(n_neighbors=i)
-    knn.fit(X_train, y_train)
-    val_scores.append(knn.score(X_val, y_val))
-
-print("best validation score: {:.3f}".format(np.max(val_scores)))
-best_n_neighbors = neighbors[np.argmax(val_scores)]
-print("best n_neighbors:", best_n_neighbors)
-
-knn = KNeighborsClassifier(n_neighbors=best_n_neighbors)
-knn.fit(X_trainval, y_trainval)
-print("test-set score: {:.3f}".format(knn.score(X_test, y_test)))
-
->>> best validation score: 0.991
->>> best n_neighbors: 11
->>> test-set score: 0.951
-```
-
-.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
-
----
-
-class: middle
-
 ## Cross-validation
 
 .center.width-100[![](figures/day4/kfold_cv.png)]
@@ -179,37 +149,9 @@ class: middle
 
 class: middle
 
-.center.width-100[![](figures/day4/grid_search_cross_validation.png)]
+## Cross-validation + test set
 
-.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
-
----
-
-class: middle
-
-```python
-from sklearn.model_selection import cross_val_score
-
-X_train, X_test, y_train, y_test = train_test_split(X, y)
-cross_val_scores = []
-
-for i in neighbors:
-    knn = KNeighborsClassifier(n_neighbors=i)
-    scores = cross_val_score(knn, X_train, y_train, cv=10)
-    cross_val_scores.append(np.mean(scores))
-
-print("best cross-validation score: {:.3f}".format(np.max(cross_val_scores)))
-best_n_neighbors = neighbors[np.argmax(cross_val_scores)]
-print("best n_neighbors:", best_n_neighbors)
-
-knn = KNeighborsClassifier(n_neighbors=best_n_neighbors)
-knn.fit(X_train, y_train)
-print("test-set score: {:.3f}".format(knn.score(X_test, y_test)))
-
->>> best cross-validation score: 0.967
->>> best n_neighbors: 9
->>> test-set score: 0.965
-```
+.center.width-80[![](figures/day4/grid_search_cross_validation.png)]
 
 .footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
 
@@ -222,33 +164,6 @@ class: middle
 .center.width-80[![](figures/day4/gridsearch_workflow.png)]
 
 .footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
-
-
----
-
-class: middle
-
-```python
-from sklearn.model_selection import GridSearchCV
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y)
-
-param_grid = {'n_neighbors':  np.arange(1, 15, 2)}
-grid = GridSearchCV(KNeighborsClassifier(), param_grid=param_grid,
-                    cv=10, return_train_score=True)
-grid.fit(X_train, y_train)
-
-print("best mean cross-validation score: {:.3f}".format(grid.best_score_))
-print("best parameters: {}".format(grid.best_params_))
-print("test-set score: {:.3f}".format(grid.score(X_test, y_test)))
-
->>> best mean cross-validation score: 0.967
->>> best parameters: {'n_neighbors': 9}
->>> test-set score: 0.993
-```
-
-.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
-
 
 ---
 
@@ -277,11 +192,33 @@ class: middle
 
 class: middle
 
-## Construction
+## Tree construction
 
-.center.width-60[![](figures/day4/tree_building_iteration_1.png)]
-.center.width-60[![](figures/day4/tree_building_iteration_2.png)]
-.center.width-60[![](figures/day4/tree_building_iteration_9.png)]
+.center.width-100[![](figures/day4/tree_building_iteration_1.png)]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+
+---
+
+count: false
+class: middle
+
+## Tree construction
+
+.center.width-100[![](figures/day4/tree_building_iteration_2.png)]
+
+.footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
+
+
+---
+
+count: false
+class: middle
+
+## Tree construction
+
+.center.width-100[![](figures/day4/tree_building_iteration_9.png)]
 
 .footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
 
@@ -375,7 +312,7 @@ class: middle
 
 # Gradient boosting
 
-<br><br><br>
+<br><br>
 
 $$
 \begin{aligned}
@@ -384,7 +321,7 @@ f\_{2}(x) &\approx y - f\_{1}(x) \\\\
 f\_{3}(x) &\approx y - f\_{1}(x) - f\_{2}(x)
 \end{aligned}$$
 
-$y \approx$ .width-25[![](figures/day4/grad_boost_term_1.png)] + .width-25[![](figures/day4/grad_boost_term_2.png)] + .width-20[![](figures/day4/grad_boost_term_3.png)] + ...
+$y \approx$ .width-30[![](figures/day4/grad_boost_term_1.png)] + .width-30[![](figures/day4/grad_boost_term_2.png)] + .width-15[![](figures/day4/grad_boost_term_3.png)] + ...
 
 .footnote[Credits: Andreas Mueller, [Introduction to Machine Learning with Scikit-Learn](https://github.com/amueller/ml-workshop-2-of-4/), 2019.]
 
@@ -395,7 +332,7 @@ count: false
 
 # Gradient boosting
 
-<br><br><br>
+<br><br>
 
 $$
 \begin{aligned}
@@ -404,7 +341,7 @@ f\_{2}(x) &\approx y - \gamma f\_{1}(x) \\\\
 f\_{3}(x) &\approx y - \gamma f\_{1}(x) - \gamma f\_{2}(x)
 \end{aligned}$$
 
-$y \approx$ $\gamma$ .width-25[![](figures/day4/grad_boost_term_1.png)] + $\gamma$ .width-25[![](figures/day4/grad_boost_term_2.png)] + $\gamma$ .width-20[![](figures/day4/grad_boost_term_3.png)] + ...
+$y \approx$ $\gamma$ .width-30[![](figures/day4/grad_boost_term_1.png)] + $\gamma$ .width-30[![](figures/day4/grad_boost_term_2.png)] + $\gamma$ .width-15[![](figures/day4/grad_boost_term_3.png)] + ...
 
 $\gamma$ = learning rate
 
@@ -415,18 +352,6 @@ $\gamma$ = learning rate
 class: middle
 
 .center.width-100[![](figures/day4/boosting.png)]
-
----
-
-class: middle
-
-## Advantages
-
-- Slower to train than RF (if using "old" `GradientBoostingRegressor`), but much faster to predict.
-- Very fast using XGBoost, LightGBM, pygbm, new scikit-learn implementation `HistGradientBoosting`.
-- Small model size.
-- Typically the **best off-the-shelf model** for tabular data.
-
 
 ---
 
@@ -468,7 +393,24 @@ class: middle
 
 ---
 
-xxx
+class: middle
+
+.center.width-70[![](figures/day1/map2-yellow.jpg)]
+
+.footnote[Credits: vas3k, [Machine Learning for Everyone](https://vas3k.com/blog/machine_learning/), 2018.]
+
+---
+
+class: middle
+
+.center.width-100[![](figures/day1/ai-cycle-yellow.png)]
+
+---
+
+count: false
+class: end-slide, middle, center
+
+The end.
 
     </textarea>
     <script src="./assets/remark-latest.min.js"></script>
