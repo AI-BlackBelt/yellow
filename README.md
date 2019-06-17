@@ -27,3 +27,7 @@ Practice regression algorithms for sentiment analysis.
 ## Day 4
 
 Learn how to let the machine tune itself.
+
+- [Slides](https://ai-blackbelt.github.io/yellow/slides/day4.html)
+- [Notebooks](https://github.com/AI-BlackBelt/yellow/tree/master/notebooks)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AI-BlackBelt/yellow/master)
