@@ -3,6 +3,12 @@
 X = df[['CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT']]
 y = df["MEDV"]
 
+from sklearn.compose import make_column_transformer
+from sklearn.preprocessing import StandardScaler
+categories = (X.dtypes == object)
+tf = make_column_transformer((StandardScaler(),~categories), remainder="passthrough")
+X = tf.fit_transform(X)
+
 print('X.shape:', X.shape)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
 
