@@ -13,9 +13,11 @@ class: middle, center, title-slide
 
 .center[.width-60[![](./assets/yellow.png)]]
 
-## AI Black Belt - Yellow
+# AI Black Belt: Yellow
 
 Day 1/4: Introduction to Machine Learning with Python
+
+<br><br><br>
 
 ---
 
@@ -72,9 +74,11 @@ class: middle, center
 
 class: middle, center
 
-.width-80[![](figures/day1/mushrooms.png)]
+.width-90[![](figures/day1/mushrooms.png)]
 
 What do you see?
+
+???
 
 How do you do that?!
 
@@ -82,7 +86,9 @@ How do you do that?!
 
 class: middle, center
 
-How to *write a computer program* that would solve tasks we cannot even start describing how we solve them ourselves?
+.italic[
+How to write a computer program that would solve tasks we cannot even start describing how we solve them ourselves?
+]
 
 ---
 
@@ -107,8 +113,7 @@ class: middle
 
 .center.width-90[![](figures/day1/neocognitron1.png)]
 
-The Neocognitron (Fukushima, 1980) is a computer implementation of a *neural network* with a visual perception system.
-A **total failure** at the time!
+The Neocognitron (Fukushima, 1980) is a computer implementation of a **neural network** with a visual perception system.
 
 .footnote[Credits: Kunihiko Fukushima, [Neocognitron: A Self-organizing Neural Network Model](https://www.rctn.org/bruno/public/papers/Fukushima1980.pdf), 1980.]
 
@@ -121,17 +126,17 @@ Les patterns à détecter sont appris, et non hardcodés comme pour le perceptro
 class: middle
 
 .grid[
-.kol-2-5.center[.width-100[![](figures/day1/neuron.png)]]
+.kol-2-5.center[.width-80[![](figures/day1/neuron.png)]]
 .kol-3-5[
 
-<br><br><br><br><br><br><br>
+<br><br><br><br>
 
 $$\neq \sigma \left(\sum\_i w\_i x\_i + b\right)$$
 
 ]
 ]
 
-.center[Biological inspiration? **Not necessarily a good idea**!]
+.center[Biological inspiration? Not necessarily a good idea.]
 
 ---
 
@@ -139,7 +144,16 @@ class: middle
 
 ## Deep Learning (2012-Present)
 
-.center.width-100[![](figures/day1/inception.png)]
+.center[
+<video preload="auto" height="400" width="750" autoplay loop>
+  <source src="./figures/day1/toolbox.mp4" type="video/mp4">
+</video>
+
+The deep learning toolbox
+]
+
+.footnote[Credits: [Oriol Vinyals](https://twitter.com/OriolVinyalsML/status/1212422497339105280), 2020.]
+
 
 ---
 
@@ -164,59 +178,13 @@ class: middle
 
 class: middle, center, black-slide
 
-<iframe width="600" height="450" src="https://www.youtube.com/embed/qWl9idsCuLQ" frameborder="0" allowfullscreen></iframe>
+<iframe width="600" height="450" src="https://www.youtube.com/embed/Nu-nlQqFCKg" frameborder="0" allowfullscreen></iframe>
 
-Segmentation (Hengshuang et al, 2017)
-
----
-
-class: middle, center, black-slide
-count: false
-
-<iframe width="600" height="450" src="https://www.youtube.com/embed/pW6nZXeWlGM" frameborder="0" allowfullscreen></iframe>
-
-Pose estimation (Cao et al, 2017)
+Speech translation and synthesis (2012)
 
 ---
 
 class: middle, center, black-slide
-count: false
-
-<iframe width="600" height="450" src="https://www.youtube.com/embed/-96BEoXJMs0" frameborder="0" allowfullscreen></iframe>
-
-Driving a car (2016)
-
----
-
-class: middle, center, black-slide
-count: false
-
-<iframe width="600" height="450" src="https://www.youtube.com/embed/yyLa6xIK9Qs" frameborder="0" allowfullscreen></iframe>
-
-Playing soccer (2018)
-
----
-
-class: middle, center, black-slide
-count: false
-
-<iframe width="600" height="450" src="https://www.youtube.com/embed/V1eYniJ0Rnk" frameborder="0" allowfullscreen></iframe>
-
-Playing Atari games
-
----
-
-class: middle, center, black-slide
-count: false
-
-<iframe width="600" height="450" src="https://www.youtube.com/embed/gn4nRCC9TwQ" frameborder="0" allowfullscreen></iframe>
-
-Learning to walk (2017)
-
----
-
-class: middle, center, black-slide
-count: false
 
 <iframe width="600" height="450" src="https://www.youtube.com/embed/7gh6_U7Nfjs" frameborder="0" allowfullscreen></iframe>
 
@@ -225,7 +193,106 @@ Speech synthesis and question answering (Google, 2018)
 ---
 
 class: middle, center, black-slide
-count: false
+
+<iframe width="600" height="450" src="https://www.youtube.com/embed/V1eYniJ0Rnk" frameborder="0" allowfullscreen></iframe>
+
+Playing Atari games
+
+---
+
+class: middle, center, black-slide
+
+<iframe width="600" height="450" src="https://www.youtube.com/embed/g-dKXOlsf98" frameborder="0" allowfullscreen></iframe>
+
+Beat the best human Go players (2016)
+
+---
+
+class: middle, center, black-slide
+
+<iframe width="600" height="450" src="https://www.youtube.com/embed/yyLa6xIK9Qs" frameborder="0" allowfullscreen></iframe>
+
+Playing soccer (2018)
+
+
+---
+
+class: middle, center, black-slide
+
+<iframe width="600" height="450" src="https://www.youtube.com/embed/qhUvQiKec2U" frameborder="0" allowfullscreen></iframe>
+
+Driving a car (NVIDIA, 2016)
+
+---
+
+class: middle, center, black-slide
+
+<iframe width="600" height="450" src="https://www.youtube.com/embed/tlThdr3O5Qo" frameborder="0" allowfullscreen></iframe>
+
+Autopilot (Tesla, 2019)
+
+???
+
+A full build of Autopilot neural networks involves 48 networks that take 70,000 GPU hours to train 🔥. Together, they output 1,000 distinct tensors (predictions) at each timestep.
+
+---
+
+class: middle, center, black-slide
+
+<iframe width="600" height="450" src="https://www.youtube.com/embed/DuIrjRAzNPQ" frameborder="0" allowfullscreen></iframe>
+
+... while preventing accidents.
+
+---
+
+
+class: middle, center, black-slide
+
+<iframe width="600" height="450" src="https://www.youtube.com/embed/gn4nRCC9TwQ" frameborder="0" allowfullscreen></iframe>
+
+Learning to walk (2017)
+
+???
+
+Single algorithm for learning! Nothing is hardcoded.
+
+Similar to a baby learning to walk.
+
+---
+
+class: middle, center, black-slide
+
+<iframe width="600" height="450" src="https://www.youtube.com/embed/IvmLEq9piJ4" frameborder="0" allowfullscreen></iframe>
+
+Detecting skin cancer (2017)
+
+---
+
+class: middle, center
+
+.center.width-60[![](figures/day1/meena.gif)]
+
+Google Meena, telling a joke (2020)
+
+---
+
+class: middle, center, black-slide
+
+<iframe width="600" height="450" src="https://www.youtube.com/embed/Khuj4ASldmU" frameborder="0" allowfullscreen></iframe>
+
+Artistic style transfer (Ruder et al, 2016)
+
+---
+
+class: middle, center, black-slide
+
+<iframe width="600" height="450" src="https://www.youtube.com/embed/egJ0PTKQp4U?start=223" frameborder="0" allowfullscreen></iframe>
+
+Compose music (NVIDIA, 2017)
+
+---
+
+class: middle, center, black-slide
 
 <iframe width="600" height="450" src="https://www.youtube.com/embed/kSLJriaOumA" frameborder="0" allowfullscreen></iframe>
 
@@ -234,21 +301,26 @@ Image generation (Karras et al, 2018)
 ---
 
 class: middle, center, black-slide
-count: false
 
 <iframe width="600" height="450" src="https://www.youtube.com/embed/p5U4NgVGAwg" frameborder="0" allowfullscreen></iframe>
 
 Changing sketches into photorealistic masterpieces (NVIDIA)
 
+---
+
+class: middle, center, black-slide
+
+<iframe width="600" height="450" src="https://www.youtube.com/embed/gLoI9hAX9dw?start=46" frameborder="0" allowfullscreen></iframe>
+
+It’s Getting Harder to Spot a Deep Fake Video
 
 ---
 
 class: middle, center, black-slide
-count: false
 
-<iframe width="600" height="450" src="https://www.youtube.com/embed/egJ0PTKQp4U?start=223" frameborder="0" allowfullscreen></iframe>
+<iframe width="600" height="450" src="https://www.youtube.com/embed/BIDaxl4xqJ4" frameborder="0" allowfullscreen></iframe>
 
-Music composition (NVIDIA, 2017)
+Dali Lives (2019)
 
 ---
 
